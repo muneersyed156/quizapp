@@ -1,14 +1,14 @@
-var a=document.getElementsByTagName("input")
-var r=document.getElementById("score-count")
-var c=0
-for(var i=0;i<a.length;i++){
-    a[i].id=a[i].name+a[i].value
-    a[i].addEventListener("change",changed)
+var a = document.getElementsByTagName("input")
+var r = document.getElementById("score-count")
+var c = 0
+for (var i = 0; i < a.length; i++) {
+    a[i].id = a[i].name + a[i].value
+    a[i].addEventListener("change", changed)
 }
-var ans=[]
-var answered=[]
-$.get("http://5d76bf96515d1a0014085cf9.mockapi.io/quiz",function(data,status){
-    for(var i=0;i<data.length;i++){
+var ans = []
+var answered = []
+$.get("http://5d76bf96515d1a0014085cf9.mockapi.io/quiz", function (data, status) {
+    for (var i = 0; i < data.length; i++) {
         ans.push(data[i].answer)
         answered.push(false)
     }
@@ -51,6 +51,8 @@ function changed() {
     console.log(answered)
     var k1 = document.getElementsByName(this.name)
     for (var i = 0; i < k1.length; i++) {
-        k1[i].checked = false
+        if (k1[i].value != this.value) {
+            k1[i].disabled = true;
+        }
     }
 }
