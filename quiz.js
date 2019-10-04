@@ -14,39 +14,43 @@ $.get("http://5d76bf96515d1a0014085cf9.mockapi.io/quiz",function(data,status){
     }
 })
 
-function changed(){
-    var k=this.name
-    k=k.split('')
+function changed() {
+    var k = this.name
+    k = k.split('')
     k.reverse()
     k.pop()
-    k=parseInt(k[0])
-       var qno=k
-       var qval=parseInt(this.value)
-       console.log(qno)
-       console.log(qval)
-       console.log(ans)
-       if(ans[qno-1]==qval && answered[qno-1]==false){
-           c+=1
-           r.innerHTML=c
-           var m=document.getElementById(this.id)
-       var tm=m.parentNode
-       var tp=tm.parentNode
-       tp.classList.add("correct")
-       }
-       else if(ans[qno-1]!=qval && answered[qno-1]==false){
-        var m=document.getElementById(this.id)
-        var tm=m.parentNode
-        var tp=tm.parentNode
+    k = parseInt(k[0])
+    var qno = k
+    var qval = parseInt(this.value)
+    console.log(qno)
+    console.log(qval)
+    console.log(ans)
+    if (ans[qno - 1] == qval && answered[qno - 1] == false) {
+        c += 1
+        r.innerHTML = c
+        var m = document.getElementById(this.id)
+        var tm = m.parentNode
+        var tp = tm.parentNode
+        tp.classList.add("correct")
+    }
+    else if (ans[qno - 1] != qval && answered[qno - 1] == false) {
+        var m = document.getElementById(this.id)
+        var tm = m.parentNode
+        var tp = tm.parentNode
         tp.classList.add("incorrect")
-        var w=this.id
-        w=w.split('')
-        w=w[0]+w[1]+(ans[parseInt(w[1])-1]).toString()
-       console.log(w)
-       var m=document.getElementById(w)
-       var tm=m.parentNode
-       var tp=tm.parentNode
-       tp.classList.add("correct")
-       }
-       answered[qno-1]=true
-       console.log(answered)
+        var w = this.id
+        w = w.split('')
+        w = w[0] + w[1] + (ans[parseInt(w[1]) - 1]).toString()
+        console.log(w)
+        var m = document.getElementById(w)
+        var tm = m.parentNode
+        var tp = tm.parentNode
+        tp.classList.add("correct")
+    }
+    answered[qno - 1] = true
+    console.log(answered)
+    var k1 = document.getElementsByName(this.name)
+    for (var i = 0; i < k1.length; i++) {
+        k1[i].checked = false
+    }
 }
